@@ -1,6 +1,6 @@
 /* Visible, bounded application update checks. */
 const KoikeUpdate = (() => {
- const VERSION='0.2.1';
+ const VERSION='0.3.1';
  let busy=false,view={kind:'idle',text:'点击检查是否有新版本',detail:'当前版本 '+VERSION,button:'检查应用更新'},sequence=0;
  function mount(){let status=document.querySelector('#app-update-status');const button=document.querySelector('[data-action="update-app"]');if(!button)return;
   if(!status){status=document.createElement('div');status.id='app-update-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');status.setAttribute('aria-atomic','true');button.insertAdjacentElement('afterend',status);}paint();
