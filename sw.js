@@ -1,4 +1,4 @@
-const CACHE='koike-shell-v0.3.1';
+const CACHE='koike-shell-v0.3.2';
 const ASSETS=['./','./index.html','./style.css','./data.js','./core.js','./app.js','./game.js','./user-band-2d.png','./manifest.webmanifest','./icon.svg','./icon-180.png','./icon-192.png','./icon-512.png','./articles.json','./example-library.js','./offline-reading.js','./update-ui.js'];
 async function progress(completed){const clients=await self.clients.matchAll({type:'window',includeUncontrolled:true});for(const client of clients)if(client.url.startsWith(self.registration.scope))client.postMessage({type:'KOIKE_UPDATE_PROGRESS',completed,total:ASSETS.length});}
 self.addEventListener('install',event=>event.waitUntil((async()=>{const cache=await caches.open(CACHE);await progress(0);let completed=0;await Promise.all(ASSETS.map(async asset=>{await cache.add(new Request(new URL(asset,self.registration.scope),{cache:'reload'}));await progress(++completed);}));})()));
